@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Class18_MultiCheckbox</title>
+</head>
+
+<body>
+  <div id="app">
+    <input v-model="userList" type="checkbox" value="Mary" id="user1" />
+    <label for="user1"> Mary </label>
+    <input v-model="userList" type="checkbox" value="Candy" id="user2" />
+    <label for="user2"> Candy </label>
+    <input v-model="userList" type="checkbox" value="Lulu" id="user3" />
+    <label for="user3"> Lulu </label>
+    <input v-model="userList" type="checkbox" value="Mandy" id="user4" />
+    <label for="user4"> Mandy </label>
+    <p>
+      <strong> User list : {{userList}}</strong> 
+    </p>
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    createApp({
+      data() {
+        return {
+          userList: [],
+        };
+      },
+    }).mount("#app");
+  </script>
+</body>
+
+</html>

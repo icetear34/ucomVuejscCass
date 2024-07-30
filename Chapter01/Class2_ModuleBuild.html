@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class2_ModuleBuild</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}} 
+    </div>
+    <script type="module" >
+        //用modul build引用 避免不同模組間變數命名干擾
+        import {createApp} from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.34/vue.esm-browser.min.js';
+        
+        createApp({
+            //vdata
+            data() {
+                return {
+                    
+                    msg : "yolo"
+                };
+            },
+        }).mount("#app")
+    </script>
+    
+</body>
+<footer>
+    
+</footer>
+</html>

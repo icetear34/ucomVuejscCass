@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Class12_vBind</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-bind 可以動態綁定屬性-->
+    <span v-bind:style="{color:redColor}"> {{ msg }} </span>
+    
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    createApp({
+      data() {
+        return {
+          msg: "Hello World !",
+          // 定義一個變數 redColor
+          redColor:"red"
+        };
+      },
+    }).mount("#app");
+  </script>
+</body>
+
+</html>

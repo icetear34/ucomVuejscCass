@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class1_Interpolation</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}} 
+    </div>
+    <script type="importmap" >
+    {
+        "imports":{
+            "Vue":"https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.34/vue.esm-browser.min.js"
+        }
+    }
+    </script>
+    <script type="module" >
+        //再有支援的時候建議以model模式引用、開發
+        import  {createApp} from 'Vue'
+        createApp({
+           setup(){
+                let msg = "yolo!"
+                //return {msg}
+           },
+           //回傳必須為物件
+           data() {
+            return {
+                msg: "yolo"
+            }
+           },
+        }).mount("#app")
+    </script>
+    
+</body>
+<footer>
+    
+</footer>
+</html>

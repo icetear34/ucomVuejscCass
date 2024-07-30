@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Class15_Modifier</title>
+</head>
+
+<body>
+  <div id="app">
+    <input v-model.trim.lazy="input.input1"  placeholder="Enter data" />
+    <p><strong> Number : </strong> {{input.input1}} </p>
+    <p><strong> Type : </strong> {{input.input1}} </p>
+    <br />
+    <!--
+      修飾幅可以接連使用
+      .number 修飾符可以將輸入的資料轉換為數字
+      .trim 修飾符可以自動去除輸入的空白
+      .lazy 修飾符可以將輸入的資料延遲更新(魚油邊離開時才更新)
+    -->
+    <input v-model.number="input.input1" placeholder="Enter data" />
+    <p><strong> Number : </strong> {{input.input2}} </p>
+    <p><strong> Type : </strong> {{input.input2}} </p>
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    createApp({
+      data() {
+        return {
+          input:{
+            input1: "",
+            input2: ""
+          }
+        };
+      },
+    }).mount("#app");
+  </script>
+</body>
+
+</html>

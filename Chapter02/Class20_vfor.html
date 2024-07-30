@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title> Class20_vfor </title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 
+    等效
+    v-for = "option in genderOptions"
+    等效
+    v-for ="option in genderOptions"
+    但沒設置key會導致陣列/列表資料亂序
+    -->
+  <template v-for="(option,index) in genderOptions" :key="option.value">
+    <input 
+    v-model="gender" 
+    type="radio" 
+    v-bind:value="option.value"
+    v-bind:id="option.value"        
+    />
+    <label v-bind:for="option.value"> 
+      {{option.label}} 
+    </label>
+  </template>
+    <p><strong> gender : </strong> {{ gender }}</p>
+
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    createApp({
+      data() {
+        return {
+          gender: "",
+          genderOptions: [
+            {
+              label:"Male",
+              value:"Male"
+            }  ,
+            {
+              label:"Female",
+              value:"Female"
+            }
+          ]
+        };
+      },
+    }).mount("#app");
+    //藉由window.app可以在console中檢查app的資料
+    window.app = app;
+  </script>
+</body>
+
+</html>

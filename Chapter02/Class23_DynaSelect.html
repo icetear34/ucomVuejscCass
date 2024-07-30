@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Class23_DynaSelect</title>
+  </head>
+  <body>
+    <div id="app">
+      <h3> 選取多個城市 </h3>
+      <select v-model="city" multiple>
+        <option v-for="o in cities" v-bind:value="o.value" :key="o.value"> {{ o.value + o.text  }} </option>
+
+      </select>
+
+      <p> <strong> 你選了: </strong> {{ city }} </p>
+    </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'   
+      createApp({
+        data() {
+          return {
+            city: [],
+            cities:[{
+              value:"TPE",
+              text:"台北"
+            },
+            {
+              value:"TXG",
+              text:"台中"
+            },
+            {
+              value:"TNN",
+              text:"台南"
+            },
+            {
+              value:"KHH",
+              text:"高雄"
+            },
+            {
+              value:"CYI",
+              text:"嘉義"
+            },
+            {
+              value:"YUN",
+              text:"雲林"
+            }]
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+
+    </script>
+  </body>
+</html>

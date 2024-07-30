@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Class06_Watcher</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-model.number 限制輸入為數字 並在輸入時轉型-->
+      <input type="number" v-model.number="mydata"/>
+      mydata: {{ mydata }}
+      <p>{{ msg }}</p>
+    </div>
+    <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'   
+      createApp({
+        data() {
+          return {
+            msg: "",
+            mydata:null
+          };
+        },
+        //轉型失敗時不會觸發watch
+        watch: {
+          // 監聽mydata的變化 對象名稱需與data中的一致
+          mydata(newValue) {
+            if(this.isInRange(newValue)){
+              this.msg = "在範圍內";
+            }else{
+              this.msg = "超出範圍";
+            }
+          }
+        },        
+        //用於監聽多個變數
+        methods: {
+          isInRange:function (value) {
+            return value >= 0 && value <= 100;
+          }
+        }
+      }).mount("#app");
+    </script>
+  </body>
+</html>

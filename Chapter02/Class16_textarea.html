@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Class16_textarea</title>
+</head>
+
+<body>
+  <div id="app">
+    <textarea v-model="input" cols="30" style="height:80px" placeholder="Enter data">
+      
+    </textarea>
+    <!--
+    css語法
+    pre-line;壓縮空白
+    pre-wrap;保留空白
+    -->
+    <p style="white-space: pre-line;">
+        {{input}}
+    </p>      
+    <p style="white-space: pre-wrap;">
+      {{input}} 
+    </p>
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    createApp({
+      data() {
+        return {
+          input: "",//初始化資料
+        };
+      },
+    }).mount("#app");
+  </script>
+</body>
+
+</html>

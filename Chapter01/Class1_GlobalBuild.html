@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class1_GlobalBuild</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.34/vue.global.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}} 
+    </div>
+    <script>
+        //全域引用
+        const {createApp}=Vue
+        createApp({
+            //vdata
+            data() {
+                return {
+                    
+                    msg : "yolo"
+                };
+            },
+        }).mount("#app")  
+    </script>
+</body>
+<footer>
+    
+</footer>
+</html>

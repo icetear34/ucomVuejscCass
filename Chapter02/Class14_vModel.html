@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Class14_vModel</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-model 可以雙向綁定資料 
+    與 v-bind 不同的是，v-model 是雙向綁定，當 input 輸入資料時，資料會同步更新到 data 中的 userName 
+    v-model = v-bind + v-on
+      $event 是一個特殊變數，代表事件物件，可以取得事件的值
+    -->
+    <input v-model="userName"  placeholder="Enter your name " />
+
+    <br>
+    <!-- 等效 -->
+    <input v-bind:value="userName" v-on:input="userName = $event.target.value"  placeholder="Enter your name " >
+    
+
+
+    <div>Your name is: {{userName}} </div>
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    createApp({
+      data() {
+        return {
+          userName:""
+        };
+      },
+    }).mount("#app");
+  </script>
+</body>
+
+</html>

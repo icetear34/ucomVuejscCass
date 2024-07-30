@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+   <!-- select>option{option$}*5 -->
+    <select v-model="city">
+      <option disabled value="">選取城市</option>
+      <option >台北</option>
+      <option >台中</option>
+      <option >台南</option>
+      <option >高雄</option>
+     </select>
+
+
+
+    
+    <p>
+      <strong> 你選了: {{city}}</strong> 
+    </p>
+
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    createApp({
+      data() {
+        return {
+          city:""
+        };
+      },
+    }).mount("#app");
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Class19_radio</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <label for="gender1" v-model="gender" name="gender" value="Male"> Male </label>
+
+    <label for="gender2" v-model="gender" name="gender" value="Female"> Female </label>
+
+    <p>
+      <strong> gender : </strong> 
+    </p>
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    createApp({
+      data() {
+        return {
+          gender:Male
+        };
+      },
+    }).mount("#app");
+  </script>
+</body>
+
+</html>

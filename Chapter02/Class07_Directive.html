@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Class07_Directive</title>
+</head>
+
+<body>
+  <div id="app">
+    <!--
+    "v-" 為指令的前綴名為指令(Directive)
+     v-text 用於替代{{}} 
+    這樣可以避免在網頁一開始時出現{{}} 
+     -->
+    <span v-text="msg"></span>
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    createApp({
+      data() {
+        return {
+          msg: "Hello World Vue",
+        };
+      },
+    }).mount("#app");
+  </script>
+</body>
+
+</html>
