@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Class27_velseif</title>
+  </head>
+  <body>
+    <div id="app">
+      <select v-model="size" >
+        <option disabled value=""> 選取咖啡大小 </option>
+        <option> Large </option>
+        <option> Medium </option>
+        <option> Small </option>
+      </select>
+      <br/>
+      <template v-if="size === 'Large'">
+        <p> Large Size </p>
+      </template>
+      <template v-else-if="size === 'Medium'">
+        <p> Medium Size </p>
+      </template>
+      <template v-else-if="size === 'Small'">
+        <p> Small Size </p>
+      </template>
+      <template v-else>
+        <p> Not Selected </p>
+      </template>
+    
+    </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'   
+      createApp({
+        data() {
+          return {
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

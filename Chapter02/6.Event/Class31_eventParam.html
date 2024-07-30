@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Class31_eventParam</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 將參數直接傳入 -->
+      <button @click="pluseOne(step)"> Add to Cart </button>
+      <p> <strong> num : </strong> {{ num }} </p>
+    </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'   
+      createApp({
+        data() {
+          return {
+            num: 0,
+            step: 2,
+          };
+        },
+        methods: {
+          pluseOne(step) {
+            this.num += step;
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Class32_eventObject</title>
+  </head>
+  <body>
+    <div id="app">
+      <!--     帶入自訂參數後再帶上觸發物件       -->
+      <button @click="plusNum(step,$event)">Add to Cart</button>
+      <p><strong> num : </strong> {{ num }}</p>
+    </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'   
+      createApp({
+        data() {
+          return {
+            num: 0,
+            step: 10,
+          };
+        },
+        methods: {
+          plusNum: function (val) {
+            this.num += val;
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

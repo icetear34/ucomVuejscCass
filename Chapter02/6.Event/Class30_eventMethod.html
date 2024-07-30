@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Class30_eventMethod</title>
+  </head>
+  <body>
+    <div id="app">
+      <!--     js的函數未帶括號會自動帶入event       -->
+      <button v-on:click="addToCart()">Add to Cart</button>
+      <p><strong> num : </strong> {{ num }}</p>
+    </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'   
+      createApp({
+        data() {
+          return {
+            num: 0,
+          };
+        },
+        methods: {
+          addToCart() {
+            //這個this是指Vue實例
+            this.num++;
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
