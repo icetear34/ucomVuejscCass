@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 
+    Add a fade effect to the transition: 
+    vue動畫綁定分6個點
+    v-enter: 開始進入的瞬間
+    v-enter-active: 進入過程中
+    v-enter-to: 進入結束的瞬間
+    v-leave: 開始離開的瞬間
+    v-leave-active: 離開過程中
+    v-leave-to: 離開結束的瞬間
+    v對應transition 意下為例 name="fade"
+    */
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity 2s;
+    }
+    .fade-enter-from,
+    .fade-leave-to {
+      opacity: 0;
+    }
+  </style>
+  <style>
+    /*
+    匯入樣式
+    */
+    @import 'todoitem.css';
+  </style>
+
+
+</head>
+
+<body>
+//第5節到第14節以註解標示說明內容
+
+
+
+  <div id="app">
+    <form v-on:submit.prevent="addNewTodo">
+      <label for="new-todo">Add a todo</label>
+      <input ref="newtodoref"  v-model="newTodoText" id="new-todo"  placeholder="輸入項目或?顯示提示" />
+      <button :disabled="newTodoText=='?' || !newTodoText  ? true : false"
+      v-bind:class="{ 'disable-cursor' : newTodoText=='?' || !newTodoText  ? true : false }"
+      >Add</button>
+    </form>
+<!--淡出淡入 效果 -->
+    <transition name="fade">
+      <p v-if="this.message">
+        你可以試著輸入: {{message}}
+      </p>
+    </transition>
+
+
+    <p>
+      Count : {{todoCount}}
+    </p>
+
+
+    <ul>
+      <todo-item v-for="(todo, index) in todos" 
+      :key="todo.id" 
+      :title="todo.title"
+      @remove="removeTodo(index)"
+      > 
+      </todo-item>
+    </ul>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3.2.45/dist/vue.esm-browser.prod.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    import TodoItem from './todo-item.js'
+    createApp({
+      components: { TodoItem },
+      data() {
+        return {
+          message:'',
+          newTodoText: '',
+          nextTodoId: 4,
+          todos: [
+            { id: 1, title: 'molestiae perspiciatis ipsa' },
+            { id: 2, title: 'et doloremque nulla' },
+            { id: 3, title: 'laborum aut in quam' }
+          ],
+        }
+      },     
+       methods: {
+        removeTodo(index) {
+          this.todos.splice(index, 1);
+          this.focusInput()//游標焦點操作
+        },
+        addNewTodo() {
+          this.todos.push({
+            id: this.nextTodoId++,
+            title: this.newTodoText
+          })
+          this.newTodoText = ''
+          this.focusInput()//游標焦點操作
+        },
+        async getHint() {
+          this.message = ''
+          const no = Math.floor(Math.random() * 200) //radnom number 0-200       
+          const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${no}`)
+          if (!res.ok) {
+            this.message = 'Error!' + res.status
+          } else {
+            this.message = (await res.json()).title
+          }
+        },
+        focusInput() {
+          this.$refs.newtodoref.focus();//使用ref取得元素 後操作焦點
+        },
+      },
+      computed:{
+        todoCount(){
+          return this.todos.length
+        }
+      },
+      watch: {
+        newTodoText(newText, oldText) {
+          if (newText.includes('?')) {
+            this.getHint()
+          } else {
+            this.message = ''
+          }
+        }
+      },
+      mounted() {
+        this.focusInput() 
+      },
+    }).mount('#app')
+  </script>
+</body>
+
+</html>

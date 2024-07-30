@@ -1,0 +1,3 @@
+>npx
+>create-vue
+>npm create vite@latest
