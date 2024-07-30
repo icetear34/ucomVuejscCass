@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <welcome-component user-name="mary"></welcome-component>
+    </div>
+    <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+      let welcome = {
+        template: `<div>
+          <h1> {{ userName }} </h1>
+          <input type="text" v-model="userName" />
+          </div>`,
+        props: ["userName"],
+        //data屬性是一個函數，返回一個對象 一個實例只能有一個data函數
+        data:function (){
+          return {
+            userName: this.userName
+          }
+        }
+      };
+
+      var app = createApp({
+        components: {
+          "WelcomeComponent" : welcome
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

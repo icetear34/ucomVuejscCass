@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 使用propsType 限制props的型態 需用:綁定-->
+       <!--父組件不能由子組件傳值 須由父組件觸發更新 $emit -->
+      <welcome-component message="Hello" user-name="mary" :age="10" ></welcome-component>
+      <welcome-component message="Hi" user-name="candy" :age="11"></welcome-component>
+      <welcome-component message="Hi" userName="candy2" :age="12"></welcome-component>
+    </div>
+    <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+      let welcome = {
+        template: " <h1> {{message}} {{ userName }}{{age}}</h1> ",
+        props: {
+          message: String,//指定propsType
+          userName: [String, Number],//允許多種
+          age:Number          
+        },
+      };
+      var app = createApp({
+        data() {
+          return {};
+        },
+        components: {
+          "WelcomeComponent" : welcome
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

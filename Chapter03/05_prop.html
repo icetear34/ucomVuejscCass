@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title> Document </title>
+  </head>
+  <body>
+    <div id="app">
+      <welcome-component ></welcome-component>
+      <welcome-component ></welcome-component>
+    </div>
+    <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+      let welcome = {
+        template: " <h1>Hello </h1> ",
+      };
+      var app = createApp({
+        components: {
+          "WelcomeComponent" : welcome,
+          //Component屬性名稱為props
+          //命名規則為camelCase
+          //在template中使用時，需轉為kebab-case(Vue會自動對應)
+          props:["userName"],
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+      <my-component></my-component>
+      <my-component></my-component>
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    let app = createApp({
+      data() {
+        return {};
+      },      
+    })
+    app.component("my-component", {
+        template: `
+          <div>
+            <h1>Global Component</h1>
+            <p>Global Component</p>
+          </div>
+        `
+      })
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

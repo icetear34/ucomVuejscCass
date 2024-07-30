@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!--新增 送出js行為但用prevent停止html後送-->
+        <form @submit.prevent="addTodo">
+            <label for="newTodo">Add a new todo</label>
+            <input type="text" v-model="newTodo" id="new-todo" placeholder="Add a new todo" />
+            <button type="submit">Add</button>
+        <ul>
+            <!--加入新增-->            
+            <todo-item v-for="(todo,index) in todos" v-bind:key="todo.id" :tittle="todo.tittle"
+             @remove="todos.splice(index,1)" ></todo-item>
+        </ul>
+    </div>
+
+
+     <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js"
+      }
+    }
+  </script>
+  <script type="module">
+    import { createApp } from 'vue'
+   import todoItem from '/Chapter04/todoList3-Add/todo-item.js'
+    var app = createApp({
+        data() {
+            return {
+                todos: [
+                    { id: 1, tittle: "Learn Vue" },
+                    { id: 2, tittle: "Learn JavaScript" },
+                    { id: 3, tittle: "Learn HTML" },
+                ],
+                newTodo: "",
+            };
+        },
+        components: {
+            TodoItem: todoItem,
+        },
+        methods: {
+            addTodo() {
+                this.todos.push({
+                    id: this.todos.length + 1,
+                    tittle: this.newTodo
+                });
+                this.newTodo = "";
+            }
+        },
+    });
+    app.mount("#app");
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 使用  -->
+      <welcomeComponent></welcomeComponent>
+      <welcomeComponent></welcomeComponent>
+    </div>
+    <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    // Local Component 定義內容
+    let welcomeComponent = {
+      template: `<h1>Welcome Component</h1>`
+    };
+      var app = createApp({
+        data() {
+          return {};
+        },
+        // Local Component 註冊
+        componente: {
+          welcomeComponent
+        }
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

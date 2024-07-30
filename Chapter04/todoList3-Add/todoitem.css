@@ -1,0 +1,26 @@
+ul li {
+  list-style-type: square;
+  counter-increment: item;
+  margin-bottom: 10px;
+  background: #DAD2CA;
+  margin-right: 50px;
+}
+
+ul li:before {
+  content: counter(item);
+  margin-right: 5px;
+  font-size: 150%;
+  background-color: #f9dd94;
+  color: hsla(234, 82%, 50%, 0.932);
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+ul li button {
+  float: right; 
+  margin-top: 3px;
+  margin-right: 3px;
+  color: rgb(230, 28, 28);
+}
+
