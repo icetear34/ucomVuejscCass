@@ -1,17 +1,18 @@
 <template>
   <div class="container">
-    <h1 class ="display-3">Posts App </h1>
-    <h1 class="h6">Seeing all posts</h1>
-    <add-post />
-    <Posts />
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <div class="container">
+      <router-view/>
+    </div>
   </div>
 </template>
 
-<script setup>
-//@ is an alias for /src
-import Posts from '@/components/Posts.vue';
-import AddPost from './components/AddPost.vue';
-</script>
+
+
+
 
 <style >
 #app {  
