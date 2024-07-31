@@ -6,8 +6,11 @@
                 <strong> Id:</strong>{{ p.id }} <br/>
                 <strong> userId:</strong>{{ p.userId }} <br/>
                 <strong> title:</strong>{{ p.title }} <br/>
-                <strong> body:</strong>{{ p.body }} <br/>                
-            </li>
+                <strong> body:</strong>{{ p.body }} <br/> 
+                <div class="mt-3 ">
+                    <button @click="remoePostAction(p.id)" type="button" class="btn btn-danger">Delete</button>
+                </div>               
+            </li>           
         </ul>
     </div>
 </template>
@@ -19,6 +22,9 @@ const store = usePostStore();
 
 if(store.getAllPosts.length <= 0){
     store.getPostAction();
+}
+function remoePostAction(id){
+    store.removePostAction(id);
 }
 
 const getAllPosts = computed(() =>  store.getAllPosts)
