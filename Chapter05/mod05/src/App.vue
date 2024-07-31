@@ -14,7 +14,10 @@
   </ul>
 </template>
 
-
+<script setup>
+import { provide } from 'vue';
+provide('copyright', '我是誰© 2024');
+</script>
 
 
 
