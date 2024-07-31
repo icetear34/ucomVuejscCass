@@ -13,9 +13,12 @@
 import { computed } from "vue";
 import { usePostStore } from "@/store/PostStore.js";
 const store = usePostStore();
-const getAllPosts = computed(() => 
-    store.getAllPosts
-)
+
+if(store.getAllPosts.length <= 0){
+    store.getPostAction();
+}
+
+const getAllPosts = computed(() =>  store.getAllPosts)
 
 </script>
 
