@@ -2,8 +2,11 @@
     <div>
         <h3> Post </h3>
         <ul class="list-group">
-            <li class="list-group-item" v-for="p in getAllPosts" v-bind:key="p.Id">                
-                {{ p.title }}
+            <li class="list-group-item" v-for="p in getAllPosts" v-bind:key="p.id">                
+                <strong> Id:</strong>{{ p.id }} <br/>
+                <strong> userId:</strong>{{ p.userId }} <br/>
+                <strong> title:</strong>{{ p.title }} <br/>
+                <strong> body:</strong>{{ p.body }} <br/>                
             </li>
         </ul>
     </div>
