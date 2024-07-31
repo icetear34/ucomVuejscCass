@@ -1,9 +1,7 @@
 <template>
   <h1>Home</h1>
   <div ref="div">
-    <p>Employee Name : {{ employee.employeeName }}</p>
-    <p>Age : {{ employee.age }}</p>
-    <p>Is Married : {{ employee.isMarried }}</p>
+    <p>Employee Name : {{ employeeInfo }}</p>
   </div>
   <button @click="buttonClick">Click</button>
   <hr />
@@ -15,14 +13,16 @@
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive,computed } from "vue";
 
 const employee = reactive({
   employeeName: "mary",
   age: 50,
   isMarried: true,
 });
-
+const employeeInfo = computed(() => {
+  return '${employee.employeeName} - ${employee.age} - ${employee.isMarried}';
+}) ;
 const div = ref(null);
 
 const buttonClick = () => {

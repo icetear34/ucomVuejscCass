@@ -9,7 +9,16 @@
 <script setup>
 
 const props = defineProps(['employeeList'])
-
+import { onMounted,onUnmounted,onUpdated } from 'vue';
+onMounted(() => {
+  console.log('mounted');
+})
+onUnmounted(() => {
+  console.log('unmounted');
+})  
+onUpdated(() => {
+  console.log('updated');
+})
 </script>
 
 <style>

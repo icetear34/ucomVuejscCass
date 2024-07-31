@@ -11,8 +11,10 @@
 
 <script setup>
 import { computed } from "vue";
+//建議用camocase命名
+const props = defineProps(['employeeList']);
 const Count = computed(() => {
-  return ``;
+  return `${props.employeeList.length}`;
 })
 </script>
 <style>

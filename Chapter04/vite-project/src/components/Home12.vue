@@ -8,7 +8,7 @@
     <p v-for="employee in filterResult" :key="employee">{{ employee }}</p>
   </div>
   <p>
-    <button>Disable All Watch</button>
+    <button @click="disableAllWatch">Disable All Watch</button>
   </p>
 </template>
 <script setup>
@@ -28,15 +28,19 @@ const filterResult = computed(() => {
   );
 });
 
-watch(keyword, () => {
+const disablewatch = watch(keyword, () => {
   // console.log(` watch  `);
   console.log(` watch : ${keyword.value} `);
 });
-watchEffect(() => {
+const  disablewatchEffect = watchEffect(() => {
   // console.log( ` watchEffect ` );
   console.log(` watchEffect : ${keyword.value} `);
 });
 
+const disableAllWatch = () => {
+  disablewatch();
+  disablewatchEffect();
+};
 
 </script>
 

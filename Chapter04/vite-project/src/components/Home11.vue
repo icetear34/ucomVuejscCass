@@ -10,7 +10,7 @@
   </div>
 </template>
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed,watch,watchEffect } from "vue";
 const keyword = ref("");
 const employeeList = ref([
   "mary",
@@ -22,6 +22,15 @@ const employeeList = ref([
 ]);
 const filterResult = computed(() => {
   return employeeList.value.filter((name) => name.startsWith(keyword.value));
+});
+//第一次渲染时，watchEffect会立即执行
+watchEffect(() => {
+  console.log("watchEffect - keyword : ", keyword.value);
+});
+
+watch(keyword, (newValue, oldValue) => {
+  console.log(newValue, ">",oldValue);
+  console.log("watch - keyword : ", keyword.value);
 });
 
 </script>

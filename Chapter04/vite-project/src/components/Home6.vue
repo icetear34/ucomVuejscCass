@@ -8,27 +8,28 @@
   <button @click="buttonClick">Click</button>
   <hr />
   <div>
-    Employee Name : <input type="text"  /> <br />
-    age : <input type="number"  /><br />
-    isMarried : <input type="checkbox"  /><br />
+    Employee Name : <input type="text" v-model="employeeName" /> <br />
+    age : <input type="number" v-model="age" /><br />
+    isMarried : <input type="checkbox" v-model="isMarried" /><br />
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref,reactive } from "vue";
 
-const employeeName = ref("mary");
-const age = ref(50);
-const isMarried = ref(true);
+const employee = reactive({
+  employeeName : "mary",
+  age :50,
+  isMarried :true
+});
 const div = ref( null );
-
 const buttonClick = () => {
-  employeeName.value = "candy";
-  age.value = 60;
-  isMarried.value = false;
-  console.log(employeeName.value);
-  console.log(age.value);
-  console.log(isMarried.value);
+  employee.employeeName= "candy";
+  employee.age= 60;
+  employee.isMarried = false;
+  console.log(employee.employeeName);
+  console.log(employee.age);
+  console.log(employee.isMarried);
   div.value.style.backgroundColor = "yellow";
 };
 </script>
