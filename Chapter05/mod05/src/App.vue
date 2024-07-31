@@ -1,13 +1,17 @@
 <template>
-  <div class="container">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <router-link to="/">Home</router-link> 
+    </li>
+    <li class="nav-item">|
+      </li>
+    <li class="nav-item">
       <router-link to="/about">About</router-link>
-    </div>
+      </li>
     <div class="container">
       <router-view/>
     </div>
-  </div>
+  </ul>
 </template>
 
 
@@ -15,6 +19,11 @@
 
 
 <style >
+.nav-item {
+  width: 33%;
+  text-align: center;
+}
+
 #app {  
   color: #2c3e50;
   padding: 50px;  
