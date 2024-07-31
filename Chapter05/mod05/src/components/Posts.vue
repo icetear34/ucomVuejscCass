@@ -9,6 +9,7 @@
                 <strong> body:</strong>{{ p.body }} <br/> 
                 <div class="mt-3 ">
                     <button @click="remoePostAction(p.id)" type="button" class="btn btn-danger">Delete</button>
+                    <router-link :to="`/edit/${p.id}`" class="btn btn-primary">Edit</router-link>
                 </div>               
             </li>           
         </ul>
@@ -18,6 +19,7 @@
 <script setup>
 import { computed } from "vue";
 import { usePostStore } from "@/store/PostStore.js";
+import router from "@/router";
 const store = usePostStore();
 
 if(store.getAllPosts.length <= 0){
